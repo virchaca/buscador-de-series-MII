@@ -22,10 +22,10 @@
     2- Pintar el listado de fav:
         - El color de fondo y el de fuente se intercambian, indicando que es una serie favorita.
         - listado en la parte izquierda de la pantalla, debajo del formulario de búsqueda, con las series favoritas --> CREAR ARRAY VACIO PARA METER LAS FAVS, fuera, GLOBAL y LETs 
-        - Las series favoritas deben seguir apareciendo a la izquierda aunque la usuaria realice otra búsqueda. ¿LOCALSTORAGE? ¿+=?
+        - Las series favoritas deben seguir apareciendo a la izquierda aunque la usuaria realice otra búsqueda. ¿LOCALSTORAGE para FAV? ¿+=?
 
 4. Almacenamiento local en el localStorage. 
-creo cobst para almacenar, hago un JSON.stringify al ARRAY de FAVS, luego tendre que llamrlo para que salga por defecto al LEVANTAR la pagina.
+creo const para almacenar, hago un JSON.stringify al ARRAY de FAVS, luego tendre que llamrlo para que salga por defecto al LEVANTAR la pagina.
 (al recargar la página el listado de favoritos se debe mostrarse)
 */
 
@@ -42,7 +42,7 @@ const fav = document.querySelector ('.js-fav');
 // const url = `https://api.tvmaze.com/search/shows?q=${valueI}`;
 
 let searchList = []; //mi array con el obj show
-// let favList = [];
+let favList = [];
 
 // funciones
 
@@ -54,48 +54,99 @@ function getApiInfo () {
         console.log(dataApi);
         searchList = dataApi;    
         renderList();  /*la llamo dentro de la respuesta del servidor, que es cuando me ha llegado la info*/
-    });
+        });    
 }
 getApiInfo (); //para que me pinte grils al levantar pagina
 
 
 function renderList() {    
-    console.log('holaaaa');
+    // console.log('holaaaa');
     container.innerHTML = '';
-    console.log(searchList);
-    
+    console.log(searchList);    
     for (let i=0; i<searchList.length; i++) {
         let src= searchList[i].show.image;
+        //hago el condicional antes de pintar el html
 
         if(searchList[i].show.image=== null){
         src ='https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
         }else{src = searchList[i].show.image.medium}
 
-        container.innerHTML+=`<li class= "li">
-        <article class= "article"> 
-        <h3>${searchList[i].show.name}</h3>
-        <img src= "${src}" alt= "" class= "img" />
-        </article>
-        </li>`;       
-   
+        container.innerHTML+=`
+            <li class= "li js-li" id= ${searchList[i].show.id} >
+                <h3>${searchList[i].show.name}</h3>
+                <img src= "${src}" alt= "" class= "img" />
+                </article>
+            </li>`;       
     }  
+    addFav();    
 }  
 
 // Con operador ternario para src: let src = searchList[i].show.image ? searchList[i].show.image.medium : 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
 
-  
-   
-  
-
 function handleClick(event) {
     event.preventDefault();
     //llamar info de API --> fetch
-    getApiInfo ();
-    
-    
+    getApiInfo ();        
 };
 
-// llamar funciones
+//**********series favoritas**********************/ 
+
+function handleAdd(ev){
+    // console.log(ev.target);
+    console.log(ev.currentTarget.id);
+    const idShow = parseInt(ev.currentTarget.id); 
+    //pongo un parseInt() porque el id son numeros, no string
+    let favShow = searchList.find(item=>item.show.id === idShow);
+    console.log(favShow);
+    
+    //comprobar si está en el listado de favoritos
+    const indexFav = favList.findIndex(item=>item.show.id === idShow);
+    console.log(`mi index ${indexFav}`);
+
+    if(indexFav === -1){
+        favList.push(favShow); 
+        // -1 siginifica que no está
+        //si no está, lo meto en el array FAV
+    }else{
+        favList.splice(indexFav, 1); 
+     //si está, al clickar, lo elimino (1 elemento desde posicion indexFav)
+    
+    }
+    console.log(`mi lista favoritas ${favList}`);
+
+    //pintar en HTML
+    renderListFav();  
+}  
+              
+function renderListFav() {
+    // console.log('holaaaa');
+    fav.innerHTML= '';
+    for (let i=0; i<favList.length; i++) {
+    let src2= favList[i].show.image;  
+    //hago el condicional antes de pintar el html
+    //tengo que poner en todo favList[i], no favShow, porque ahi le estaría pasando UN elemento
+    if(favList[i].show.image=== null){
+        src2 ='https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+    }else{src2 = favList[i].show.image.medium}
+        fav.innerHTML+=
+            `<li class= "fav js-li" id="" >
+                <h3>${favList[i].show.name}</h3>
+                <img src= "${src2}" alt= "" class= "img" />
+                </article>
+            </li>`;  
+    }    
+}
+
+function addFav () {    
+    const allShows = document.querySelectorAll('.js-li');
+    // console.log(allShows);
+    for(const item of allShows){
+        item.addEventListener('click', handleAdd);
+    }
+    
+}
+
+/***********************************************/
 
 
 //eventos
