@@ -3,26 +3,26 @@
 /*pasos
 1 - hacer HTML
 2 - buscar/filtrar series y pelis de TV
-    1- traer constantes
-    2- evento click sobre boton --> ejecuta handle
-    3- funcion handle:
-        - ev.preventDefault()
-        - recoger valor input ¿funcion o constante GLOBAL?
-        - filtrar lo k hay en API con FETCH("https://api.tvmaze.com/search/shows?q=${name}"):
-            Mirar en JSON el nombre de los datos que necesito!!!
-            
-        - PINTAR titulo y foto:
-            - pintar solo name y image --> BUCLE
-            - dar estilo con clase en CSS
-            - CONDICIONAL: si no tiene img, poner la mia por defecto (https://via.placeholder.com/210x295/ffffff/666666/?text=TV)
+    1- traer constantes
+    2- evento click sobre boton --> ejecuta handle
+    3- funcion handle:
+        - ev.preventDefault()
+        - recoger valor input ¿funcion o constante GLOBAL?
+        - filtrar lo k hay en API con FETCH("https://api.tvmaze.com/search/shows?q=${name}"):
+            Mirar en JSON el nombre de los datos que necesito!!!
+            
+        - PINTAR titulo y foto:
+            - pintar solo name y image --> BUCLE
+            - dar estilo con clase en CSS
+            - CONDICIONAL: si no tiene img, poner la mia por defecto (https://via.placeholder.com/210x295/ffffff/666666/?text=TV)
 
 3 - Favoritas
-    1 - evento click sobre las peliculas --> crear qsALL y currentTarget
+    1 - evento click sobre las peliculas --> crear qsALL y currentTarget
 
-    2- Pintar el listado de fav:
-        - El color de fondo y el de fuente se intercambian, indicando que es una serie favorita.
-        - listado en la parte izquierda de la pantalla, debajo del formulario de búsqueda, con las series favoritas --> CREAR ARRAY VACIO PARA METER LAS FAVS, fuera, GLOBAL y LETs 
-        - Las series favoritas deben seguir apareciendo a la izquierda aunque la usuaria realice otra búsqueda. ¿LOCALSTORAGE para FAV? ¿+=?
+    2- Pintar el listado de fav:
+        - El color de fondo y el de fuente se intercambian, indicando que es una serie favorita.
+        - listado en la parte izquierda de la pantalla, debajo del formulario de búsqueda, con las series favoritas --> CREAR ARRAY VACIO PARA METER LAS FAVS, fuera, GLOBAL y LETs 
+        - Las series favoritas deben seguir apareciendo a la izquierda aunque la usuaria realice otra búsqueda. ¿LOCALSTORAGE para FAV? ¿+=?
 
 4. Almacenamiento local en el localStorage. 
 creo const para almacenar, hago un JSON.stringify para el ARRAY de FAVS, luego tendre que llamarlo para que salga por defecto al LEVANTAR la pagina.
@@ -36,7 +36,8 @@ const input = document.querySelector ('.js-input');
 const btnS= document.querySelector ('.js-search');
 const container = document.querySelector ('.js-container');
 const fav = document.querySelector ('.js-fav');
-
+const btnX = document.querySelector('.js-x');
+const btnR = document.querySelector('.js-reset');
 // creo una funcion para poder poner algo predeterminado, o poner un value en el input de html???
 
 // const url = `https://api.tvmaze.com/search/shows?q=${valueI}`;
@@ -44,7 +45,7 @@ const fav = document.querySelector ('.js-fav');
 let searchList = []; //mi array con el obj show
 let favList = []; //lista favoritos
 const myList = JSON.parse(localStorage.getItem("myShows"));
-//lamo mi constante con la info del localstorage que he guardado tras crear mi lista de favoritos
+//llamo mi constante con la info del localstorage que he guardado tras crear mi lista de favoritos
 
 //pongo que cuando levante la pagina, si hay info en el localstorage sobre mi lista de favoritos, la muestre/pinte
 if(myList !==null){
@@ -70,7 +71,7 @@ getApiInfo (); //para que me pinte dexter al levantar pagina
 function renderList() {    
     // console.log('holaaaa');
     container.innerHTML = '';
-    console.log(searchList);    
+    // console.log(searchList);    
     for (let i=0; i<searchList.length; i++) {
         let src= searchList[i].show.image;
         //hago el condicional antes de pintar el html
@@ -81,8 +82,10 @@ function renderList() {
 
         container.innerHTML+=`
             <li class= "li js-li" id= ${searchList[i].show.id} >
-                <img src= "${src}" alt= "" class= "img" />
-                <h3>${searchList[i].show.name}</h3>                
+                
+                    <img src= "${src}" alt= "" class= "imgSearch" />
+                    <span class= "pSearch">${searchList[i].show.name}</span>
+                            
             </li>`;       
     }  
     addFav();   //llamo a mi funcion de añadir a favoritos una vez tengo pintada la lista, porque voy a clickar en ella 
@@ -113,16 +116,17 @@ function handleAdd(ev){
     if(indexFav === -1){
         favList.push(favShow); 
         // -1 siginifica que no está, si no está, lo meto en el array favList
+        ev.currentTarget.classList.add('change');
+
     }else{
         favList.splice(indexFav, 1); 
      //si está, al clickar, lo elimino (1 elemento desde posicion indexFav)
-    
+     ev.currentTarget.classList.remove('change');     
     }
     console.log(`mi lista favoritas ${favList}`);
-    localStorage.setItem("myShows", JSON.stringify(favList));
-
-    //pintar en HTML
+        //pintar en HTML
     renderListFav();  
+    localStorage.setItem("myShows", JSON.stringify(favList));
 }  
               
 function renderListFav() {
@@ -132,26 +136,35 @@ function renderListFav() {
     let src2= favList[i].show.image;  
     //hago el condicional antes de pintar el html
     //tengo que poner en todo favList[i], no favShow, porque ahi le estaría pasando UN elemento
-    if(favList[i].show.image=== null){
-        src2 ='https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
-    }else{src2 = favList[i].show.image.medium}
+        if(favList[i].show.image=== null){
+            src2 ='https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+        }else{src2 = favList[i].show.image.medium;}
         fav.innerHTML+=
             `<li class= "fav js-li" id="" >
-                <img src= "${src2}" alt= "" class= "img" />
-                <h3>${favList[i].show.name}</h3>
-            </li>`;  
-    }    
+                <article class= "artFav">
+                    <span class= "h3Fav">${favList[i].show.name}</span>
+                    <img src= "${src2}" alt= "" class= "imgFav" />
+                    <button class="x js-x">x</button>
+                    
+                </article>
+                </li>`;  
+        // btnX.addEventListener('click', () => {
+        //     favList.splice(indexFav, 1); 
+        // });    
+    }
 }
 
 function addFav () {    
     const allShows = document.querySelectorAll('.js-li');
     // console.log(allShows);
     for(const item of allShows){
-        item.addEventListener('click', handleAdd);
-    }
-    
+        item.addEventListener('click', handleAdd);        
+    }    
 }
 
+// btnR.addEventListener('clikc', () => {
+//     fav.innerHTML= "";
+// });
 /***********************************************/
 
 
@@ -159,26 +172,15 @@ function addFav () {
 
 btnS.addEventListener('click', handleClick);
 
-/*******guardar en localStorage****/
-
-
-
-
-
-
-
-
-
-
 
 
 
 /* Bonus:
  1 - que sobre cada fav haya una X (ejercicio Dayana sept) y que al  darle, borre de la LISTA y del LOCALST.
 
- 2 - si hago CLICK sobre SERIE en listado SEARCH, se borre de lista FAVS (como ejemplo yanelis 28 sept)
+ 2 - si hago CLICK sobre SERIE en listado SEARCH, se borre de lista FAVS (como ejemplo yanelis 28 sept) HECHO
 
- 3 - En listado SEARCH, si la peli está en FAVs, que aparezca de DISTINTO COLOR
+ 3 - En listado SEARCH, si la peli está en FAVs, que aparezca de DISTINTO COLOR A MEDIAS, NO SE QUEDA MARCADO AL REFRESCAR PAGINA
 
  4 - Al final de FAVs, haya un BOTON RESET que me borre todo el Listado FAVs.
 */

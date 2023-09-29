@@ -7,20 +7,26 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-
-    <main>
-
+    <header>
         <h1>Buscador de Series</h1>
-
         <form action="">
-            <input type="text" class="js-input" value="dexter">
+            <input type="text" class="js-input" value="pirates">
             <button class="js-search">SEARCH</button>
         </form>
-        <h2>MIS FAVORITAS</h2>
-        <div class="div">
-            <section class="js-fav"></section>
+    </header>
+    <main class="main">
 
-            <section class="js-container"></section>
+        <div class="divFav">
+            <h2 class="h2Fav">Mis Favoritas</h2>
+            <section class="sectionFav js-fav"></section>
+            <button class="js-reset">RESET</button>
+        </div>
+ 
+        
+        
+        <div class="divSearch">
+            <h2 class="h2Search">Recomendaciones y búsquedas</h2>
+            <section class="container js-container "></section>
         </div>       
         
     </main>

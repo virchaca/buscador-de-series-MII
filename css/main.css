@@ -1,36 +1,61 @@
 * {
     padding: 0;
-    background-color: rgb(142, 195, 219);
+    background-color: rgb(222, 232, 236);
 }
-.div {
+.main {
     display: flex;
 }
+
+/* section search */
+.container {
+    display: flex;
+    flex-wrap: wrap;    
+}
 .li {
-    background-color: rgb(162, 129, 194);
-    width: 100px;
-    font-size: 12px;
-    margin: 10px;
-    border: 1px solid black;
-    padding: 10px;
+    list-style: none; 
+    margin: 5px;    
+    width: 190px;        
+    font-weight: bold; 
+    background-color: rgb(72, 105, 94);
 }
-h3 {
-    background-color: white;    
-  
-    
+.imgSearch {
+    width: 180px;    
 }
-.img {
-    width: 50px;
+.pSearch {
+    background-color: rgb(72, 105, 94);
 }
 
+/* section fav */
 .fav {
-    background-color: rgb(76, 153, 76);
-    width: 100px;
-    font-size: 12px;
-    margin: 10px;
-    margin: 10px;
-    border: 1px solid black;
-    padding: 10px;
+    list-style: none;    
 }
+
+.h3Fav {
+    font-size: 12px;
+}
+.artFav {    
+    margin: 10px;    
+    width: 100px;    
+}    
+.imgFav {
+    width: 70px;
+}
+.x {
+    background-color: gray;
+    width: 20px;
+}
+/****when shows are in favourites*/
+.change {
+   color: white;
+    background-color: rgb(20, 59, 20);
+    /* border: 1px solid; */
+    .pSearch {
+        background-color: rgb(20, 59, 20); 
+    }
+}
+
+
+/*****button*/
 button {
     background-color: rgb(64, 135, 182);
 }
