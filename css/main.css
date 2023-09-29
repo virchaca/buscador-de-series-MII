@@ -1,0 +1,14 @@
+* {
+    margin-left: 10px;
+    padding: 0;
+}
+
+.article {
+    background-color: rgb(162, 129, 194);
+    width: 100px;
+    font-size: 12px;
+}
+.img {
+    width: 40px;
+}
+
