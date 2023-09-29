@@ -17,7 +17,7 @@
             - CONDICIONAL: si no tiene img, poner la mia por defecto (https://via.placeholder.com/210x295/ffffff/666666/?text=TV)
 
 3 - Favoritas
-    1 - evento click sobre las peliculas --> ¿crear qsALL y currentTarget?
+    1 - evento click sobre las peliculas --> crear qsALL y currentTarget
 
     2- Pintar el listado de fav:
         - El color de fondo y el de fuente se intercambian, indicando que es una serie favorita.
@@ -25,8 +25,8 @@
         - Las series favoritas deben seguir apareciendo a la izquierda aunque la usuaria realice otra búsqueda. ¿LOCALSTORAGE para FAV? ¿+=?
 
 4. Almacenamiento local en el localStorage. 
-creo const para almacenar, hago un JSON.stringify al ARRAY de FAVS, luego tendre que llamrlo para que salga por defecto al LEVANTAR la pagina.
-(al recargar la página el listado de favoritos se debe mostrarse)
+creo const para almacenar, hago un JSON.stringify para el ARRAY de FAVS, luego tendre que llamarlo para que salga por defecto al LEVANTAR la pagina.
+(al recargar la página el listado de favoritos debe mostrarse)
 */
 
 
@@ -42,7 +42,15 @@ const fav = document.querySelector ('.js-fav');
 // const url = `https://api.tvmaze.com/search/shows?q=${valueI}`;
 
 let searchList = []; //mi array con el obj show
-let favList = [];
+let favList = []; //lista favoritos
+const myList = JSON.parse(localStorage.getItem("myShows"));
+//lamo mi constante con la info del localstorage que he guardado tras crear mi lista de favoritos
+
+//pongo que cuando levante la pagina, si hay info en el localstorage sobre mi lista de favoritos, la muestre/pinte
+if(myList !==null){
+    favList=myList;
+    renderListFav();
+}
 
 // funciones
 
@@ -56,7 +64,7 @@ function getApiInfo () {
         renderList();  /*la llamo dentro de la respuesta del servidor, que es cuando me ha llegado la info*/
         });    
 }
-getApiInfo (); //para que me pinte grils al levantar pagina
+getApiInfo (); //para que me pinte dexter al levantar pagina
 
 
 function renderList() {    
@@ -73,12 +81,11 @@ function renderList() {
 
         container.innerHTML+=`
             <li class= "li js-li" id= ${searchList[i].show.id} >
-                <h3>${searchList[i].show.name}</h3>
                 <img src= "${src}" alt= "" class= "img" />
-                </article>
+                <h3>${searchList[i].show.name}</h3>                
             </li>`;       
     }  
-    addFav();    
+    addFav();   //llamo a mi funcion de añadir a favoritos una vez tengo pintada la lista, porque voy a clickar en ella 
 }  
 
 // Con operador ternario para src: let src = searchList[i].show.image ? searchList[i].show.image.medium : 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
@@ -105,14 +112,14 @@ function handleAdd(ev){
 
     if(indexFav === -1){
         favList.push(favShow); 
-        // -1 siginifica que no está
-        //si no está, lo meto en el array FAV
+        // -1 siginifica que no está, si no está, lo meto en el array favList
     }else{
         favList.splice(indexFav, 1); 
      //si está, al clickar, lo elimino (1 elemento desde posicion indexFav)
     
     }
     console.log(`mi lista favoritas ${favList}`);
+    localStorage.setItem("myShows", JSON.stringify(favList));
 
     //pintar en HTML
     renderListFav();  
@@ -130,9 +137,8 @@ function renderListFav() {
     }else{src2 = favList[i].show.image.medium}
         fav.innerHTML+=
             `<li class= "fav js-li" id="" >
-                <h3>${favList[i].show.name}</h3>
                 <img src= "${src2}" alt= "" class= "img" />
-                </article>
+                <h3>${favList[i].show.name}</h3>
             </li>`;  
     }    
 }
@@ -152,6 +158,8 @@ function addFav () {
 //eventos
 
 btnS.addEventListener('click', handleClick);
+
+/*******guardar en localStorage****/
 
 
 
