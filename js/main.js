@@ -103,7 +103,7 @@ function handleClick(event) {
 
 function handleAdd(ev){
     // console.log(ev.target);
-    console.log(ev.currentTarget.id);
+    // console.log(ev.currentTarget.id);
     const idShow = parseInt(ev.currentTarget.id); 
     //pongo un parseInt() porque el id son numeros, no string
     let favShow = searchList.find(item=>item.show.id === idShow);
@@ -148,9 +148,8 @@ function renderListFav() {
                     
                 </article>
                 </li>`;  
-        // btnX.addEventListener('click', () => {
-        //     favList.splice(indexFav, 1); 
-        // });    
+        // btnX.addEventListener('click', handleX); AQUI O EN HANDLEADD?     
+        /*tendre que hacer de nuevo un queryselectorALL con su currentTarget y borrar el target??*/     
     }
 }
 
@@ -162,16 +161,17 @@ function addFav () {
     }    
 }
 
-// btnR.addEventListener('clikc', () => {
-//     fav.innerHTML= "";
-// });
-/***********************************************/
-
+function handleReset () {
+    favList = [];
+    fav.innerHTML = "";
+    location.reload();
+    localStorage.setItem("myShows", JSON.stringify(favList));
+}
 
 //eventos
 
 btnS.addEventListener('click', handleClick);
-
+btnR.addEventListener ('click', handleReset);
 
 
 
@@ -182,5 +182,5 @@ btnS.addEventListener('click', handleClick);
 
  3 - En listado SEARCH, si la peli está en FAVs, que aparezca de DISTINTO COLOR A MEDIAS, NO SE QUEDA MARCADO AL REFRESCAR PAGINA
 
- 4 - Al final de FAVs, haya un BOTON RESET que me borre todo el Listado FAVs.
+ 4 - Al final de FAVs, haya un BOTON RESET que me borre todo el Listado FAVs. HHECHO
 */

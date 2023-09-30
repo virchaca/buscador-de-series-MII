@@ -1,11 +1,20 @@
 * {
     padding: 0;
-    background-color: rgb(222, 232, 236);
+    
+}
+.header {
+    background-color: rgb(72, 105, 94);
+    color: rgb(222, 232, 236);
+    padding-bottom: 10px;
+    padding-left: 10px;
 }
 .main {
     display: flex;
+    background-color: rgb(222, 232, 236);    
 }
-
+.h2Fav{
+    font-size: 16px;
+}
 /* section search */
 .container {
     display: flex;
@@ -56,7 +65,10 @@
 
 
 /*****button*/
-button {
+.btn {
     background-color: rgb(64, 135, 182);
+    padding: 3px;
+    font-size: 12px;
+    font-weight: bold;
 }
 
