@@ -19,7 +19,8 @@ Es importante linkar los archivvos CSS y JS correctamente a nuestro documento HT
 	....
 	<link rel="stylesheet" href="css/main.css">
 </head>
-
+```
+```bash
 <body>
 	....
 	<script src="js/main.js"></script>
@@ -36,13 +37,15 @@ Campo para buscar, seccion para pintar nuestra lista de favoritos y seccion para
             <input type="text"/>
             <button ">SEARCH</button>
         </form>
-
+```
+```bash
         <div>
             <h2 class="h2Fav">Mis Favoritas</h2>
             <section class="sectionFav js-fav"></section>
             <button class="js-reset btn">RESET</button>
         </div>
-
+```
+```bash
         <div>
             <h2>Recomendaciones y búsquedas</h2>
             <section></section>
@@ -93,4 +96,6 @@ function handleReset () {
 btnR.addEventListener ('click', handleReset);
 ```
 -> Al hacer click sobre una serie del listado de búsqueda que esté en nuestras favoritas, se elimina de la lista.
+[Os dejo por aqui el enlace a la página para que lo tengais a mano]
+http://beta.adalab.es/modulo-2-evaluacion-final-virchaca/
 
