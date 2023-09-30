@@ -71,7 +71,7 @@ Para ello definimos una función utilizando el selector querySelectorAll y el si
 
 De nuevo definiremos una funcion render que renderice dicha lista.
 
-4. 'Almacenamiento local':
+4. `Almacenamiento local`:
 
 Mediante la siguiente orden, guardaremos esta informacion en el localStorage para que quede almacenada para mayor comodidad de la usuaria.
 ```bash
@@ -100,6 +100,7 @@ function handleReset () {
 btnR.addEventListener ('click', handleReset);
 ```
 -> Al hacer click sobre una serie del listado de búsqueda que esté en nuestras favoritas, se elimina de la lista.
+
 [Os dejo por aqui el enlace a la página para que lo tengais a mano]
 http://beta.adalab.es/modulo-2-evaluacion-final-virchaca/
 
