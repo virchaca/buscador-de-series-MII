@@ -32,11 +32,13 @@ Los pasos seguidos son los siguietes:
 1. Estructura básica de HTML
 Campo para buscar, seccion para pintar nuestra lista de favoritos y seccion para pintar los resultados de nuestra búsqueda.
 ```bash
-        <h1>Buscador de Series</h1>
-        <form action="">
-            <input type="text"/>
-            <button ">SEARCH</button>
-        </form>
+        <header>
+		<h1>Buscador de Series</h1>
+       		<form action="">
+            	<input type="text"/>
+            	<button ">SEARCH</button>
+        	</form>
+	</header>
 ```
 ```bash
         <div>
@@ -51,7 +53,8 @@ Campo para buscar, seccion para pintar nuestra lista de favoritos y seccion para
             <section></section>
         </div> 
 ```
-2. Búsqueda
+2. `Búsqueda`:
+   
 Al hacer clic sobre el botón de Buscar, la aplicación debe conectarse al API abierto de TVMaze para
 búsqueda de series. 
 
@@ -60,14 +63,15 @@ Creando una función render, renderizaremos cada serie con su nombre e imagen en
 
 Ejecutaremos estas funciones asignanco un evento click al botón de buscar.
 
-3. Favoritos
+3. `Favoritos`:
+   
 Una vez aparecen los resultados de búsqueda, la usuaria puede indicar cuáles son nuestras series
 favoritas haciendo clic sobre una serie. El listado de favoritas aparecerá siempre en la parte izquierda de la pantalla, debajo del formulario de búsqueda. 
 Para ello definimos una función utilizando el selector querySelectorAll y el sistema currentTarget para que cada vez que la usuaria pinche una serie, esta se añada a la lista de favoritos, y cambie su color de fondo y fuente.
 
 De nuevo definiremos una funcion render que renderice dicha lista.
 
-4. Almacenamiento local
+4. 'Almacenamiento local':
 
 Mediante la siguiente orden, guardaremos esta informacion en el localStorage para que quede almacenada para mayor comodidad de la usuaria.
 ```bash
@@ -83,7 +87,7 @@ if(myList !==null){
 }
 ```
 
-5. BONUS: 
+5. `BONUS`: 
 
 -> Al final de la lista de favoritos hemos creado un botón reset que, al hacer click sobre él, borra todos los favoritos a la vez.
 ```bash
