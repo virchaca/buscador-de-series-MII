@@ -99,8 +99,8 @@ function handleReset () {
 }
 btnR.addEventListener ('click', handleReset);
 ```
--> Al hacer click sobre una serie del listado de búsqueda que esté en nuestras favoritas, se elimina de la lista.
+-> Además, al hacer click sobre una serie del listado de búsqueda que esté en nuestras favoritas, se elimina de la lista.
 
-[Os dejo por aqui el enlace a la página para que lo tengais a mano]
+Os dejo por aqui el enlace a la página para que lo tengais a mano
 http://beta.adalab.es/modulo-2-evaluacion-final-virchaca/
 
