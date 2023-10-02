@@ -38,9 +38,9 @@ const container = document.querySelector ('.js-container');
 const fav = document.querySelector ('.js-fav');
 const btnX = document.querySelector('.js-x');
 const btnR = document.querySelector('.js-reset');
-// creo una funcion para poder poner algo predeterminado, o poner un value en el input de html???
 
-// const url = `https://api.tvmaze.com/search/shows?q=${valueI}`;
+const valueI = input.value;    
+const url = `//api.tvmaze.com/search/shows?q=${valueI}`;
 
 let searchList = []; //mi array con el obj show
 let favList = []; //lista favoritos
@@ -56,8 +56,8 @@ if(myList !==null){
 // funciones
 
 function getApiInfo () {
-    const valueI = input.value;    
-    fetch(`//api.tvmaze.com/search/shows?q=${valueI}`)
+  
+    fetch(url)
     .then((response) => response.json())
     .then(dataApi => {       
         console.log(dataApi);
@@ -67,27 +67,37 @@ function getApiInfo () {
 }
 getApiInfo (); //para que me pinte dexter al levantar pagina
 
-
 function renderList() {        
     container.innerHTML = '';
     // console.log(searchList);   
-   
+   let classFav = '';
+
     for (let i=0; i<searchList.length; i++) {
-        let src= searchList[i].show.image;
-        
+        let src= searchList[i].show.image;             
+        let classFav = '';
+
+        const idShow = favList.findIndex(film=>film.show.id=== searchList[i].show.id);   
+
+        console.log(idShow);
+        if(idShow !== -1) {
+        classFav = 'change';             
+        }
+
+        //hago el condicional antes de pintar el html        
         if(searchList[i].show.image=== null){
         src ='https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
         }else{src = searchList[i].show.image.medium}
 
         container.innerHTML+=`
-            <li class= "li js-li" id= ${searchList[i].show.id} >
-                
-                    <img src= "${src}" alt= "" class= "imgSearch" />
+            <li class= "li js-li ${classFav}" id= ${searchList[i].show.id}>
+                <article>
+                    <img src= "${src}" alt= "imagen portada" class= "imgSearch" />
                     <span class= "pSearch">${searchList[i].show.name}</span>
-                            
-            </li>`;       
-    }  
-    addFav();   //llamo a mi funcion de añadir a favoritos una vez tengo pintada la lista, porque voy a clickar en ella 
+                </article>            
+            </li>`; 
+    }
+    
+    addFav();   //llamo a mi funcion de añadir a favoritos una vez tengo pintada la lista, porque voy a clickar en ella    
 }  
 
 // Con operador ternario para src: let src = searchList[i].show.image ? searchList[i].show.image.medium : 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
@@ -98,7 +108,7 @@ function handleClick(event) {
     getApiInfo ();        
 };
 
-//**********series favoritas**********************/ 
+//**********favorite shows**********************/ 
 
 function handleAdd(ev){
     // console.log(ev.target);
@@ -106,6 +116,7 @@ function handleAdd(ev){
     const idShow = parseInt(ev.currentTarget.id); 
     //pongo un parseInt() porque el id son numeros, no string
     let favShow = searchList.find(item=>item.show.id === idShow);
+    //encontrar el elemento
         
     //comprobar si está en el listado de favoritos
     const indexFav = favList.findIndex(item=>item.show.id === idShow);
@@ -113,17 +124,18 @@ function handleAdd(ev){
     // if(favList.includes(ev.currentTarget)){ ev.currentTarget.classList.add('change');}
     if(indexFav === -1){
         favList.push(favShow); 
+        // location.reload();
         // -1 siginifica que no está, si no está, lo meto en el array favList
-        ev.currentTarget.classList.add('change');
-
+        
     }else{
         favList.splice(indexFav, 1); 
+        // location.reload();
      //si está, al clickar, lo elimino (1 elemento desde posicion indexFav)
-     ev.currentTarget.classList.remove('change');     
     }
     // console.log(`mi lista favoritas ${favList}`);
-        //pintar en HTML       
+    //una vez que haya definido cuando añadir/eliminar favoritos, renderizo de nuevo ambas listas, renederList y renderListaFav       
     renderListFav();  
+    renderList();
     localStorage.setItem("myShows", JSON.stringify(favList));
 }  
               
@@ -134,14 +146,14 @@ function renderListFav() {
     let src2= favList[i].show.image;  
     //hago el condicional antes de pintar el html
     //tengo que poner en todo favList[i], no favShow, porque ahi le estaría pasando UN elemento
-        if(favList[i].show.image=== null){
+        if(favList[i].show.image=== null){//si la img no tiene url
             src2 ='https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
         }else{src2 = favList[i].show.image.medium;}
         fav.innerHTML+=
             `<li class= "fav"  >
-                <article class= "artFav">
+                <article class= "artFav id= ${favList[i].show.id}">
                     <span class= "h3Fav">${favList[i].show.name}</span>
-                    <img src= "${src2}" alt= "" class= "imgFav" />
+                    <img src= "${src2}" alt= "imagen portada" class= "imgFav" />
                     <button class="x js-liF" id="${favList[i].show.id}">x</button>
                     
                 </article>
@@ -175,6 +187,7 @@ function handleRemoveAdd(e){
     favList.splice(indexNoFav, 1);         
 
     renderListFav();  //volver a pintar en HTML lista actualizada
+    renderList();
     localStorage.setItem("myShows", JSON.stringify(favList));
 }  
 
@@ -189,7 +202,7 @@ function removeFavs () {
 function handleReset () {
     favList = [];
     fav.innerHTML = "";
-    location.reload();
+    renderList(); //reescribir la lista
     localStorage.setItem("myShows", JSON.stringify(favList));
 }
 
@@ -201,11 +214,11 @@ btnR.addEventListener ('click', handleReset);
 
 
 /* Bonus:
- 1 - que sobre cada fav haya una X y que al  darle, borre de la LISTA y del LOCALST. HECHO
+ 1 - que sobre cada fav haya una X y que al darle, borre de la LISTA y del LOCALST. HECHO
 
- 2 - si hago CLICK sobre SERIE en listado SEARCH, se borre de lista FAVS (como ejemplo yanelis 28 sept) HECHO
+ 2 - si hago CLICK sobre SERIE en listado SEARCH, se borre de lista FAVS. HECHO
 
- 3 - En listado SEARCH, si la peli está en FAVs, que aparezca de DISTINTO COLOR A MEDIAS, NO SE QUEDA MARCADO AL REFRESCAR PAGINA
-
- 4 - Al final de FAVs, haya un BOTON RESET que me borre todo el Listado FAVs. HHECHO
+ 3 - En listado SEARCH, si la peli está en FAVs, que aparezca de distinto color. HECHO
+ 
+ 4 - Al final de FAVs, haya un BOTON RESET que me borre todo el Listado FAVs. HECHO
 */
