@@ -95,7 +95,7 @@ function handleReset () {...};
 btnR.addEventListener ('click', handleReset);
 ```
 -> Además, al hacer click sobre una serie del listado de búsqueda que esté en nuestras favoritas, se elimina de la lista.
--> Si realizamos una nueva búsqueda y sale una serie que ya es favorita, aparece resaltada en los resultados de búsqueda (con colores de fondo y texto intercambiados), mediante su localización por método ```bash findIndex```.
+-> Si realizamos una nueva búsqueda y sale una serie que ya es favorita, aparece resaltada en los resultados de búsqueda (con colores de fondo y texto intercambiados), mediante su localización por método ```findIndex```.
 -> Al hacer clic sobre el icono de una 'x' al lado de cada favorito, se borra ese favorito clicado de la lista y del localStorage, esto lo conseguimos de nuevo creando otro  querySelectorAll y el sistema currentTarget, mediante la función
 ```bash
 removeFavs();
