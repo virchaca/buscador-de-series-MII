@@ -89,17 +89,18 @@ if(myList !==null){
 
 5. `BONUS`: 
 
--> Al final de la lista de favoritos hemos creado un botón reset que, al hacer click sobre él, borra todos los favoritos a la vez.
+-> Al final de la lista de favoritos he creado un botón reset que, al hacer click sobre él, borra todos los favoritos a la vez.
 ```bash
-function handleReset () {
-    favList = [];
-    fav.innerHTML = "";
-    location.reload();
-    localStorage.setItem("myShows", JSON.stringify(favList));
-}
+function handleReset () {...};
 btnR.addEventListener ('click', handleReset);
 ```
 -> Además, al hacer click sobre una serie del listado de búsqueda que esté en nuestras favoritas, se elimina de la lista.
+-> Si realizamos una nueva búsqueda y sale una serie que ya es favorita, aparece resaltada en los resultados de búsqueda (con colores de fondo y texto intercambiados), mediante su localización por método ```bashfindIndex```.
+-> Al hacer clic sobre el icono de una 'x' al lado de cada favorito, se borra ese favorito clicado de la lista y del localStorage, mediante la función
+```bash
+removeFavs();
+```
+que llamaré dentro de la función renderListFav(), donde además, actualizaré de nuevo la infomracion guardada en mi localStorage.
 
 Os dejo por aqui el enlace a la página para que lo tengais a mano
 http://beta.adalab.es/modulo-2-evaluacion-final-virchaca/
