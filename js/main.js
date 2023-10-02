@@ -68,14 +68,13 @@ function getApiInfo () {
 getApiInfo (); //para que me pinte dexter al levantar pagina
 
 
-function renderList() {    
-    // console.log('holaaaa');
+function renderList() {        
     container.innerHTML = '';
-    // console.log(searchList);    
+    // console.log(searchList);   
+   
     for (let i=0; i<searchList.length; i++) {
         let src= searchList[i].show.image;
-        //hago el condicional antes de pintar el html
-
+        
         if(searchList[i].show.image=== null){
         src ='https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
         }else{src = searchList[i].show.image.medium}
@@ -107,12 +106,11 @@ function handleAdd(ev){
     const idShow = parseInt(ev.currentTarget.id); 
     //pongo un parseInt() porque el id son numeros, no string
     let favShow = searchList.find(item=>item.show.id === idShow);
-    console.log(favShow);
-    
+        
     //comprobar si está en el listado de favoritos
     const indexFav = favList.findIndex(item=>item.show.id === idShow);
-    console.log(`mi index ${indexFav}`);
-
+    
+    // if(favList.includes(ev.currentTarget)){ ev.currentTarget.classList.add('change');}
     if(indexFav === -1){
         favList.push(favShow); 
         // -1 siginifica que no está, si no está, lo meto en el array favList
@@ -123,8 +121,8 @@ function handleAdd(ev){
      //si está, al clickar, lo elimino (1 elemento desde posicion indexFav)
      ev.currentTarget.classList.remove('change');     
     }
-    console.log(`mi lista favoritas ${favList}`);
-        //pintar en HTML
+    // console.log(`mi lista favoritas ${favList}`);
+        //pintar en HTML       
     renderListFav();  
     localStorage.setItem("myShows", JSON.stringify(favList));
 }  
@@ -140,17 +138,17 @@ function renderListFav() {
             src2 ='https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
         }else{src2 = favList[i].show.image.medium;}
         fav.innerHTML+=
-            `<li class= "fav js-li" id="" >
+            `<li class= "fav"  >
                 <article class= "artFav">
                     <span class= "h3Fav">${favList[i].show.name}</span>
                     <img src= "${src2}" alt= "" class= "imgFav" />
-                    <button class="x js-x">x</button>
+                    <button class="x js-liF" id="${favList[i].show.id}">x</button>
                     
                 </article>
                 </li>`;  
-        // btnX.addEventListener('click', handleX); AQUI O EN HANDLEADD?     
-        /*tendre que hacer de nuevo un queryselectorALL con su currentTarget y borrar el target??*/     
-    }
+        }
+    removeFavs(); //llamo a la funcion de borrar favs con X cuando haya pintado la lista!!
+    localStorage.setItem("myShows", JSON.stringify(favList)); //me actualice la info del LocalStorage sin este elemento
 }
 
 function addFav () {    
@@ -160,7 +158,34 @@ function addFav () {
         item.addEventListener('click', handleAdd);        
     }    
 }
+/****remove from fav by clicking***/
 
+function handleRemoveAdd(e){
+    // console.log(e.target);
+    // console.log(e.currentTarget.id);
+    //pongo el ID al BOTON, que es a quien quiero localizar(al pintar la lista de favs lo ponia al <li>, que era a quien queria pintar.)
+
+    const idFav = parseInt(e.currentTarget.id); 
+    // pongo un parseInt() porque el id son numeros, no string
+     
+    //comprobar si está en el listado de favoritos
+    const indexNoFav = favList.findIndex(itemF=>itemF.show.id === idFav);
+   //encuentro el elemeno COMPLETO por medio del indice del BOTON
+
+    favList.splice(indexNoFav, 1);         
+
+    renderListFav();  //volver a pintar en HTML lista actualizada
+    localStorage.setItem("myShows", JSON.stringify(favList));
+}  
+
+function removeFavs () { 
+    //hago qsALL a las X de la lista favList, recorro bucle. 
+    const allFavs= document.querySelectorAll('.js-liF');    
+    for(const itemF of allFavs){
+        itemF.addEventListener('click', handleRemoveAdd);        
+    }   
+}
+    
 function handleReset () {
     favList = [];
     fav.innerHTML = "";
@@ -176,7 +201,7 @@ btnR.addEventListener ('click', handleReset);
 
 
 /* Bonus:
- 1 - que sobre cada fav haya una X (ejercicio Dayana sept) y que al  darle, borre de la LISTA y del LOCALST.
+ 1 - que sobre cada fav haya una X y que al  darle, borre de la LISTA y del LOCALST. HECHO
 
  2 - si hago CLICK sobre SERIE en listado SEARCH, se borre de lista FAVS (como ejemplo yanelis 28 sept) HECHO
 
