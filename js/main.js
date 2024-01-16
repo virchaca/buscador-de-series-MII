@@ -150,9 +150,8 @@ function renderListFav() {
             `<li class= "fav"  >
                 <article class= "artFav id= ${favList[i].show.id}">
                     <span class= "h3Fav">${favList[i].show.name}</span>
-                    <img src= "${src2}" alt= "imagen portada" class= "imgFav" />
-                    <button class="x js-liF" id="${favList[i].show.id}">x</button>
-                    
+                    <img src= "${src2}" alt= "imagen portada" class= "imgFav"  />
+                    <button class="x js-liF" id="${favList[i].show.id}">x</button>                    
                 </article>
                 </li>`;  
         }

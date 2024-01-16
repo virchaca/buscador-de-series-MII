@@ -4,39 +4,84 @@
 }
 .header {
     background-color: rgb(72, 105, 94);
+    background-color: darkblue;
+    background-color: rgb(16, 16, 63);
     color: rgb(222, 232, 236);
     padding-bottom: 10px;
     padding-left: 10px;
+    text-align: center;
+    padding-block: 10px;
+   
 }
 .main {
     display: flex;
     background-color: rgb(222, 232, 236);    
+    /* background-color: rgb(84, 153, 209); */
+    background-color: white;
+    
+    
 }
 .h2Fav{
     font-size: 16px;
+    margin-inline: 20px;
+    border: 1px solid black;
+    text-align: center;
+    background-color: rgb(16, 16, 63);
+    color: white;   
+}
+.divFav{
+    background-color: grey;
 }
 /* section search */
+.h2Search{
+    margin-inline: 2rem;
+    @media all and (max-width: 768px) {
+        margin: 1rem;          
+    }
+}
 .container {
     display: flex;
-    flex-wrap: wrap;    
+    flex-wrap: wrap; 
+    margin: 2rem;   
+    @media all and (max-width: 768px) {           
+    }
+    
 }
 .li {
     list-style: none; 
     margin: 5px;    
+    padding: 10px;
     width: 190px;        
     font-weight: bold; 
     background-color: rgb(72, 105, 94);
+    background-color: rgb(16, 16, 63);
+    cursor: pointer;
+    &:hover{
+/* background-color: rgb(74, 74, 128); */
+background-color: rgb(77, 125, 197);
+    }
+    @media all and (max-width: 768px) {
+       width: 100px;       
+    }
 }
 .imgSearch {
     width: 180px;    
+    @media all and (max-width: 768px) {
+        width: 100px;       
+     }
 }
 .pSearch {
-    background-color: rgb(72, 105, 94);
+    /* background-color: rgb(72, 105, 94); */
+    color: white;
 }
 
 /* section fav */
 .fav {
     list-style: none;    
+    margin: 20px;
+    @media all and (max-width: 768px) {
+        margin: 10px;          
+    }
 }
 
 .h3Fav {
@@ -44,31 +89,48 @@
 }
 .artFav {    
     margin: 10px;    
-    width: 100px;    
+    width: 100px;  
+    @media all and (max-width: 768px) {
+        margin: 3px;      
+     }  
 }    
 .imgFav {
     width: 70px;
+ 
 }
 .x {
-    background-color: gray;
+    background-color: black;
+    color: wheat;
     width: 20px;
 }
 /****when shows are in favourites*/
 .change {
-   color: white;
-    background-color: rgb(20, 59, 20);
+   /* color: white;
+    background-color: rgb(20, 59, 20); */
+    background-color: rgb(66, 35, 66);
+    color: black;
     /* border: 1px solid; */
-    .pSearch {
-        background-color: rgb(20, 59, 20); 
-    }
+    /* .pSearch {    
+    } */
 }
 
 
 /*****button*/
 .btn {
-    background-color: rgb(64, 135, 182);
+    background-color: rgb(79, 158, 211);
     padding: 3px;
     font-size: 12px;
     font-weight: bold;
+    cursor: pointer;
+}
+.btnReset {
+    background-color: rgb(79, 158, 211);
+    background-color: darkblue;
+    color: wheat;
+    padding: 3px;
+    margin-inline: 30px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
