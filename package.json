@@ -1,0 +1,48 @@
+{
+  "name": "starter-kit",
+  "version": "1.0.0",
+  "description": "mi web starter kit",
+  "keywords": [],
+  "homepage": "https://github.com/virchaca/buscador-de-series-MII#readme",
+  "bugs": {
+    "url": "https://github.com/virchaca/buscador-de-series-MII/issues"
+  },
+  "dependencies": {
+    "browser-sync": "^2.26.12",
+    "del": "^5.1.0",
+    "eslint": "^7.1.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "*",
+    "gulp-clean-css": "*",
+    "gulp-combine-mq": "*",
+    "gulp-concat": "*",
+    "gulp-html-tag-include": "^1.0.1",
+    "gulp-notify": "*",
+    "gulp-plumber": "*",
+    "gulp-rename": "*",
+    "gulp-sass": "^5.0.0",
+    "gulp-sourcemaps": "*",
+    "gulp-uglify-es": "^2.0.0",
+    "gulp-zip": "*",
+    "sass": "^1.85.1",
+    "run-sequence": "*"
+  },
+  "devDependencies": {
+    "lodash.template": ">=4.5.0",
+    "rimraf": "^3.0.2"
+  },
+  "scripts": {
+    "start": "npx gulp",
+    "docs": "npx rimraf docs && npx gulp docs",
+    "push-docs": "npx rimraf docs && npx gulp docs && git add docs/* && git commit -m \"Update docs\" && git push",
+    "deploy": "npm run push-docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/virchaca/buscador-de-series-MII.git"
+  },
+  "license": "MIT",
+  "author": "virchaca",
+  "type": "commonjs",
+  "main": "index.js"
+}

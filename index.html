@@ -3,30 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./images/tvp.png" type="image/x-icon" />
     <title>Buscador Series</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
     <header class="header">
-        <h1>Buscador de Series</h1>
-        <p>Busca series y añádelas / quítalas de tu lista de favoritas</p>
+        <h1>🎬 Tu guía definitiva de series 📺</h1>
+        <p>Encuentra, guarda y disfruta tus series favoritas en un solo lugar.</p>
         <form action="">
-            <input type="text" class="js-input" value="elefants">
+            <input type="text" class="js-input" value="The Office">
             <button class="js-search btn">SEARCH</button>
         </form>
+        <section id="juego-ppt" class="juego-container">
+            <h2>¿Un descanso? Juega a Piedra, Papel o Tijera</h2>
+            <button id="btnAbrirJuego" class="btn">¡Jugar ahora!</button>
+            <div id="contenedorJuego" class="hidden"></div>
+          </section>
     </header>
     
     <main class="main">
 
         <div class="divFav">
-            <h2 class="h2Fav">Tus Series Favoritas</h2>
-            <section class="sectionFav js-fav"></section>
-            <button class="js-reset btnReset">RESET</button>
+            <h2 class="h2Fav">⭐ Tus Favoritas⭐</h2>
+            <section class="sectionFav js-fav containerFav"></section>
+            <button class="js-reset btnReset">VACÍA LA LISTA</button>
         </div>
  
                 
         <div class="divSearch">
-            <h2 class="h2Search">Listado de Series Disponibles</h2>
+            <h2 class="h2Search">🔍 Explora nuestras series</h2>
             <section class="container js-container "></section>
         </div>       
         

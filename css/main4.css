@@ -1,0 +1,166 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1c1c1c, #3a3a3a);
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* Cabecera */
+.header {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #2e2e2e, #4a4a4a);
+    background: linear-gradient(135deg, #ff8c42, #ff3c3c);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+.header p {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* Buscador */
+form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+input {
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+.btn {
+    padding: 10px 15px;
+    font-size: 1rem;
+    background-color: #ff7b00;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.btn:hover {
+    background-color: #ff9f40;
+}
+
+/* Contenedor principal */
+.main {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Sección Favoritos */
+.divFav {
+    flex: 1;
+    background: #222;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.h2Fav {
+    text-align: center;
+    font-size: 1.5rem;
+}
+.sectionFav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+.fav {
+    background: #333;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    width: 150px;
+}
+.h3Fav {
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 5px;
+}
+.imgFav {
+    width: 100px;
+    border-radius: 5px;
+}
+.x {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+/* Sección Listado Series */
+.divSearch {
+    flex: 3;
+    background: #222;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.h2Search {
+    text-align: center;
+    font-size: 1.5rem;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+.li {
+    background: #333;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 180px;
+}
+.li:hover {
+    background: #444;
+}
+.imgSearch {
+    width: 150px;
+    border-radius: 5px;
+}
+.pSearch {
+    display: block;
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+/* Botón Reset */
+.btnReset {
+    display: block;
+    margin: 20px auto;
+    background: darkred;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+.btnReset:hover {
+    background: red;
+}

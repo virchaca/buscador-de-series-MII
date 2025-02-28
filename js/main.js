@@ -79,7 +79,7 @@ function renderList() {
         }else{src = searchList[i].show.image.medium}
 
         container.innerHTML+=`
-            <li class= "li js-li ${classFav}" id= ${searchList[i].show.id}>
+            <li class= "li js-li liSearch ${classFav}" id= ${searchList[i].show.id}>
                 <article>
                     <img src= "${src}" alt= "imagen portada" class= "imgSearch" />
                     <span class= "pSearch">${searchList[i].show.name}</span>
@@ -147,11 +147,11 @@ function renderListFav() {
             src2 ='https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
         }else{src2 = favList[i].show.image.medium;}
         fav.innerHTML+=
-            `<li class= "fav"  >
+            `<li class= "fav favItem"  >
                 <article class= "artFav id= ${favList[i].show.id}">
                     <span class= "h3Fav">${favList[i].show.name}</span>
                     <img src= "${src2}" alt= "imagen portada" class= "imgFav"  />
-                    <button class="x js-liF" id="${favList[i].show.id}">x</button>                    
+                    <button class="x js-liF" id="${favList[i].show.id}">Quitar</button>                    
                 </article>
                 </li>`;  
         }
@@ -216,3 +216,39 @@ btnR.addEventListener ('click', handleReset);
  3 - En listado SEARCH, si la peli está en FAVs, que aparezca de distinto color. HECHO 
  4 - Al final de FAVs, haya un BOTON RESET que me borre todo el Listado FAVs. HECHO
 */
+
+
+// juego PIEDRA PAPEL TIJERA
+document.getElementById("btnAbrirJuego").addEventListener("click", function () {
+    window.open(
+      "./game.html", // Cambia la ruta por la correcta
+      "JuegoPiedraPapelTijera", 
+      "width=800,height=600,left=100,top=100,resizable=no"
+    );
+  });
+  
+// document.addEventListener("DOMContentLoaded", function () {
+//     const btnAbrirJuego = document.getElementById("btnAbrirJuego");
+//     const contenedorJuego = document.getElementById("contenedorJuego");
+  
+//     btnAbrirJuego.addEventListener("click", function () {
+//       if (contenedorJuego.innerHTML === "") {
+//         fetch("ruta/al/juego.html")
+//           .then((response) => response.text())
+//           .then((data) => {
+//             contenedorJuego.innerHTML = data;
+//             contenedorJuego.classList.remove("hidden");
+//             cargarScriptJuego();
+//           });
+//       } else {
+//         contenedorJuego.classList.toggle("hidden");
+//       }
+//     });
+  
+//     function cargarScriptJuego() {
+//       const script = document.createElement("script");
+//       script.src = "ruta/al/js/main.js"; // Ruta del script del juego
+//       document.body.appendChild(script);
+//     }
+//   });
+  

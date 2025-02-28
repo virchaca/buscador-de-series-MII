@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./images/dado1.png" type="image/x-icon" />
+  
+    <title>Piedra, Papel o Tijera</title>
+    <link rel="stylesheet" href="css/game.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/c0639d37a8.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <main>
+      <div>
+        <p class="imageGame">
+      <img style="width:150px" src="./images/manosluz.png" alt=""></p>
+
+      <h1 class="titleGame">Juego Piedra, Papel y Tijera</h1>
+      <section class="instructionsSection">
+        <button class="btnInstructions js-btnInstructions">
+          Instrucciones de Juego
+        </button>
+        <div class="instructionsList hidden js-instructionsList">
+          <p>
+            Elige elemento y dale a jugar, puedes cambiar de elemento en cada
+            ronda o seguir con el mismo
+          </p>
+          <p>
+            La partida son 3 rondas, cada vez que pulsas jugar, corre una ronda.
+          </p>
+          <p>Una vez finaliza la partida, da a reset para empezar una nueva.</p>
+        </div>
+      </section>
+      <h2 class="subtitle">Introduce aquí tu jugada:</h2>
+      <section class="playingSection">
+        <select class="js-select">
+          <option value="">Seleccione su jugada</option>
+          <option value="piedra">piedra</option>
+          <option value="papel">papel</option>
+          <option value="tijera">tijera</option>
+        </select>
+        <button class="btnPlay js-btnPlay">Jugar</button>
+      </section>
+      <section class="results">
+        <p class="resultLine js-result">Comienza</p>
+        <p class="playerLine js-player">
+          Player: <span class="js-playerScore"></span>
+          <span class="js-playerResult result"></span>
+        </p>
+        <p class="computerLine js-computer">
+          Computer: <span class="js-computerScore"></span>
+          <span class="js-computerResult result"></span>
+        </p>
+        <p class="roundLine js-round">
+          Ronda: <span class="js-roundScore"></span>
+        </p>
+      </section>
+      <section class="resetSection">
+        <p class="hidden playAgain js-pEnd">
+          ¡¡¡Resetea para volver a jugar!!!
+        </p>
+        <button class="hidden playReset js-reset">RESET</button>
+      </section>
+    </div>
+    
+    <footer class="footer">
+      <span class="mybrand">
+        <a
+          href="https://www.linkedin.com/in/virginia-alvarezperez/"
+          target="_blank"
+          ><i class="icons fa-brands fa-linkedin"></i
+        ></a>
+        <a href="https://github.com/virchaca" target="_blank"
+          ><i class="icons fa-brands fa-github-alt"></i
+        ></a>
+        @VirWebCreations
+      </span>
+      </footer>
+
+    </main>
+    <script src="js/game.js" defer></script>
+    <!-- defer permite que el script se cargue después de que el HTML esté listo. -->
+  </body>
+</html>

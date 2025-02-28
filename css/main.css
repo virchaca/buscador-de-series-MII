@@ -1,157 +1,251 @@
-* {
-  padding: 0;
-}
-.header {
-  background-color: rgb(72, 105, 94);
-  background-color: darkblue;
-  background-color: rgb(16, 16, 63);
-  color: rgb(222, 232, 236);
-  padding-bottom: 10px;
-  padding-left: 10px;
-  text-align: center;
-  padding-block: 10px;
-}
-.main {
-  display: flex;
-  background-color: rgb(222, 232, 236);
-  /* background-color: rgb(84, 153, 209); */
-  background-color: white;
-  @media all and (max-width: 768px) {
-    margin-block: 0.5rem;
-    /* display: flex;
-        flex-direction: column-reverse; */
-  }
+/* 🌙 Estilos generales - Dark mode elegante */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
-/* section search */
+/* 🎬 Header */
+.header {
+    background: url('../images/asfalt-light.png');
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+p {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+input {
+    padding: 10px;
+    width: 250px;
+    border-radius: 20px;
+    border: 2px solid #6a11cb;
+    outline: none;
+    font-size: 1rem;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    background: #6a11cb;
+    color: white;
+    font-size: 1rem;
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background: #8650be;
+}
+
+/* 📌 Contenedores */
+.main {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+/* Sección Favoritos */
+.divFav {
+    flex: 1;
+    /* background: #222; */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background: url('../images/asfalt-light.png');
+    background-color: #1e1e1e;
+}
+.h2Fav {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.divSearch {
+    flex: 3;
+    background: #222;
+    padding: 15px;
+    border-radius: 10px;
+    min-height: 300px;
+    background: url('../images/asfalt-light.png');
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
 .h2Search {
-  margin-inline: 2rem;
-  text-align: center;
-  border: 3px solid rgb(16, 16, 63);
-  color: rgb(16, 16, 63);
-  padding: 5px;
-  @media all and (max-width: 768px) {
-    margin: 1rem;
-    @media all and (max-width: 768px) {
-      font-size: 14px;
-    }
-  }
+    color: #ffffff;
+    background: url('../images/asfalt-light.png');
+    background-color: #1e1e1e;
 }
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 2rem;
-  justify-content: center;
-  @media all and (max-width: 768px) {
-    margin: 1rem;
-  }
+
+/* ⭐ Favoritos */
+.containerFav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
-.li {
-  list-style: none;
-  margin: 5px;
-  padding: 10px;
-  width: 190px;
-  font-weight: bold;
-  background-color: rgb(72, 105, 94);
-  background-color: rgb(16, 16, 63);
-  cursor: pointer;
-  &:hover {
-    background-color: rgb(77, 125, 197);
-  }
-  @media all and (max-width: 768px) {
-    width: 80px;
-    margin: 2px;
-  }
+
+.favItem {
+    background: rgba(106, 17, 203, 0.2);
+    padding: 8px;
+    margin: 8px;
+    border-radius: 10px;
+    width: 140px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.favItem:hover {
+    transform: scale(1.05);
+}
+
+.imgFav {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.h3Fav {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.x {
+    background: #ff3860;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.x:hover {
+    background: #ff1744;
+}
+
+/* 🔍 Listado de búsqueda */
+.js-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: url('../images/asfalt-light.png');
+    background-color: #1e1e1e;
+}
+
+.liSearch {
+    background: #252525;
+    background: #333;
+
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    width: 180px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.liSearch:hover {
+    transform: scale(1.05);
 }
 
 .imgSearch {
-  width: 180px;
-  @media all and (max-width: 768px) {
-    width: 60px;
-  }
+    width: 100%;
+    border-radius: 10px;
 }
+
 .pSearch {
-  /* background-color: rgb(72, 105, 94); */
-  color: white;
-  @media all and (max-width: 768px) {
-    font-size: 12px;
-  }
+    display: block;
+    margin-top: 5px;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
-/* section fav */
+/* 🌟 Estilo cuando está en favoritos */
+.change {
+    background: rgba(255, 193, 7, 0.3);
+    border: 2px solid #ffc107;
+}
 
-.h2Fav{
-    font-size: 16px;
-    margin-inline: 20px;
-    border: 1px solid black;
-    text-align: center;
-    background-color: rgb(16, 16, 63);
-    color: white;   
-    @media all and (max-width: 768px) {
-        font-size: 12px;          
+/* 🔄 Botón Reset */
+.btnReset {
+    background: #ff3860;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    display: block;
+    margin: 20px auto;
+}
+
+.btnReset:hover {
+    background: #ff1744;
+}
+
+.js-container,
+.js-fav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 🌐 Responsive */
+@media (max-width: 1024px) {
+    .main {
+        flex-direction: column;
+        align-items: center;
+    }
+    .divSearch, .divFav {
+        width: 90%;
     }
 }
-.divFav{
-    background-color: grey;
-}
-.fav {
-  list-style: none;
-  margin: 20px;
-  @media all and (max-width: 768px) {
-    margin: 2px;
-  }
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    .btn, .btnReset {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+    .favItem, .liSearch {
+        width: 140px;
+    }
 }
 
-
-.h3Fav {
-  font-size: 12px;
-  @media all and (max-width: 768px) {
-    font-size: 12px;
-  }
-}
-.artFav {
-  margin: 10px;
-  width: 100px;
-  @media all and (max-width: 768px) {
-    margin: 3px;
-  }
-}
-.imgFav {
-  width: 70px;
-  @media all and (max-width: 768px) {
-    width: 60px;
-  }
-}
-.x {
-  background-color: black;
-  color: wheat;
-  width: 20px;
-}
-/****when shows are in favourites*/
-.change {
-  /* color: white;
-    background-color: rgb(20, 59, 20); */
-  background-color: rgb(66, 35, 66);
-  color: black;
-  /* border: 1px solid; */
-  /* .pSearch {    
-    } */
-}
-
-/*****button*/
-.btn {
-  background-color: rgb(79, 158, 211);
-  padding: 3px;
-  font-size: 12px;
-  font-weight: bold;
-  cursor: pointer;
-}
-.btnReset {
-  background-color: rgb(16, 16, 63);
-  color: wheat;
-  padding: 3px;
-  margin-inline: 30px;
-  font-size: 12px;
-  font-weight: bold;
-  cursor: pointer;
+@media (max-width: 480px) {
+    .main {
+        flex-direction: column;
+        padding: 10px;
+    }
+    .divSearch, .divFav {
+        width: 100%;
+    }
+    .favItem, .liSearch {
+        width: 120px;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+    input {
+        width: 200px;
+    }
 }
