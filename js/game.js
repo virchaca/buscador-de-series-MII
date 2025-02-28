@@ -53,6 +53,7 @@ const pComputer = document.querySelector(".js-computerScore");
 const pRound = document.querySelector(".js-roundScore");
 const btnInstructions = document.querySelector(".js-btnInstructions");
 const instructionsList = document.querySelector(".js-instructionsList");
+
 // Variables
 let roundsPlayed = 0; //new
 let playerScore = 0; //new
