@@ -7,9 +7,7 @@
     <title>Buscador Series</title>
     <link rel="stylesheet" href="css/main.css">
     <script
-    src="https://kit.fontawesome.com/c0639d37a8.js"
-    crossorigin="anonymous"
-  ></script>
+    src="https://kit.fontawesome.com/c0639d37a8.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header class="header">
@@ -19,51 +17,54 @@
             <input type="text" class="js-input" value="The Office">
             <button class="js-search btn">SEARCH</button>
         </form>
-        <section id="juego-ppt" class="juego-container">
+
+        <section id="game-ppt">
             <h2>¿Un descanso? Juega a Piedra, Papel o Tijera</h2>
-            <button id="btnAbrirJuego" class="btn">¡Jugar ahora!</button>
-            <div id="contenedorJuego" class="hidden"></div>
+            <button id="btnOpenGame" class="btn">¡Jugar ahora!</button>
           </section>
     </header>
     
     <main class="main">
 
-        <div class="divFav">
-            <h2 class="h2Fav">⭐ Tus Favoritas⭐</h2>
-            <section class="sectionFav js-fav containerFav"></section>
-            <button class="js-reset btnReset">VACÍA LA LISTA</button>
+      <div class="divFav">
+          <h2 class="h2Fav">⭐ Tus Favoritas⭐</h2>
+          <section class="sectionFav js-fav containerFav"></section>
+          <button class="js-reset btnReset">VACÍA LA LISTA</button>
+      </div>
+
+              
+      <div class="divSearch">
+          <h2 class="h2Search">🔍 Explora nuestras series</h2>
+          <section class="container js-container "></section>
+      </div>              
+   
+
+      <!-- Modal juego -->
+      <div id="modalGame" class="modal">
+        <div class="modal-content">
+          <h2>¡Tómate un descanso! 🕹️</h2>
+          <p>Juega una partida de Piedra, Papel o Tijera y relájate un poco.</p>
+          <button id="btnConfirmGame" class="btn">¡Vamos!</button>
+          <button class="close-modal-js btn">Luego</span>
         </div>
- 
-                
-        <div class="divSearch">
-            <h2 class="h2Search">🔍 Explora nuestras series</h2>
-            <section class="container js-container "></section>
-        </div>       
-        
+      </div>
+
     </main>
-    <!-- Modal juego -->
-<div id="modalJuego" class="modal">
-  <div class="modal-content">
-    <h2>¡Tómate un descanso! 🕹️</h2>
-    <p>Juega una partida de Piedra, Papel o Tijera y relájate un poco.</p>
-    <button id="btnConfirmarJuego" class="btn">¡Vamos!</button>
-    <button class="close btn">Luego</span>
-  </div>
-</div>
 
     <footer class="footer">
-        <span class="mybrand">
-          <a
-            href="https://www.linkedin.com/in/virginia-alvarezperez/"
-            target="_blank"
-            ><i class="icons fa-brands fa-linkedin"></i
-          ></a>
-          <a href="https://github.com/virchaca" target="_blank"
-            ><i class="icons fa-brands fa-github-alt"></i
-          ></a>
-          @VirWebCreations
-        </span>
-    
+      <span class="mybrand">
+        <a
+          href="https://www.linkedin.com/in/virginia-alvarezperez/"
+          target="_blank"
+          ><i class="icons fa-brands fa-linkedin"></i
+        ></a>
+        <a href="https://github.com/virchaca" target="_blank"
+          ><i class="icons fa-brands fa-github-alt"></i
+        ></a>
+        @VirWebCreations
+      </span>
+    </footer>
+
     <script src="js/main.js"></script>
 </body>
 </html>

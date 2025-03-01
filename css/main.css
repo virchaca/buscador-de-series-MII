@@ -13,7 +13,7 @@ body {
     padding: 0;
 }
 
-/* 🎬 Header */
+/* Header */
 .header {
     background: url('../images/asfalt-light.png');
     background-color: #1e1e1e;
@@ -56,7 +56,7 @@ input {
     background: #8650be;
 }
 
-/* 📌 Contenedores */
+/* Main */
 .main {
     display: flex;
     gap: 20px;
@@ -67,7 +67,6 @@ input {
 /* Sección Favoritos */
 .divFav {
     flex: 1;
-    /* background: #222; */
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -96,7 +95,6 @@ input {
     background-color: #1e1e1e;
 }
 
-/* ⭐ Favoritos */
 .containerFav {
     display: flex;
     flex-wrap: wrap;
@@ -142,8 +140,24 @@ input {
 .x:hover {
     background: #ff1744;
 }
+.btnReset {
+    background: #ff3860;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    display: block;
+    margin: 20px auto;
+}
 
-/* 🔍 Listado de búsqueda */
+.btnReset:hover {
+    background: #ff1744;
+}
+
+/*  Listado de búsqueda */
 .js-container {
     display: flex;
     flex-wrap: wrap;
@@ -153,9 +167,7 @@ input {
 }
 
 .liSearch {
-    background: #252525;
     background: #333;
-
     padding: 10px;
     margin: 10px;
     border-radius: 10px;
@@ -181,29 +193,12 @@ input {
     font-weight: bold;
 }
 
-/* 🌟 Estilo cuando está en favoritos */
+/* Estilo cuando está en favoritos */
 .change {
     background: rgba(255, 193, 7, 0.3);
     border: 2px solid #ffc107;
 }
 
-/* 🔄 Botón Reset */
-.btnReset {
-    background: #ff3860;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 0.3s;
-    display: block;
-    margin: 20px auto;
-}
-
-.btnReset:hover {
-    background: #ff1744;
-}
 
 .js-container,
 .js-fav {
@@ -211,7 +206,8 @@ input {
   padding: 0;
   margin: 0;
 }
-  /* //footer */
+
+  /* footer */
   .footer {  
     text-align: center;
     padding-bottom: 1.5rem;
@@ -224,7 +220,7 @@ input {
     color: #fff;
   }
 
-/* 🌐 Responsive */
+/* Responsive */
 @media (max-width: 1024px) {
     .main {
         flex-direction: column;
@@ -313,23 +309,9 @@ input {
     font-size: 16px;
   }
   
-  .close {
-    cursor: pointer;
-  }
-  
-  .hidden {
+   .hidden {
     display: none;
   }
   
-  /* Animación */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: scale(0.8);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
+
   
