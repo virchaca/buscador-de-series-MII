@@ -44,7 +44,7 @@ function renderList() {
 
     //hago el condicional para la imagen antes de pintar el html
     if (searchList[i].show.image === null) {
-        src = "../images/no-image.png";
+        src = "./images/no-image.png";
 
     } else {
       src = searchList[i].show.image.medium;
@@ -114,7 +114,7 @@ function renderListFav() {
     //tengo que poner en todo favList[i], no favShow, porque ahi le estaría pasando UN elemento
     if (favList[i].show.image === null) {
       //si la img no tiene url, pongo no-image.png
-      src2 = "../images/no-image.png";
+      src2 = "./images/no-image.png";
     } else {
       src2 = favList[i].show.image.medium;
     }
