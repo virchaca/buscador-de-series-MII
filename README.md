@@ -79,8 +79,7 @@ Campo para buscar, seccion para pintar nuestra lista de favoritos y seccion para
 
 2. `Búsqueda`:
    
-Al hacer clic sobre el botón de Buscar, la aplicación debe conectarse al API abierto de TVMaze para
-búsqueda de series. 
+Al hacer clic sobre el botón de Buscar, la aplicación debe conectarse al API abierto de TVMaze para búsqueda de series. 
 
 Esto lo conseguimos mediante petición fetch a la api, que nos devuelve como respuesta un listado de las series que coincidan con nuestra búsqueda.
 Las series que aun no tengan una imagen asociada, llevaran por defecto una que nosotros le hemos puesto.
@@ -108,7 +107,7 @@ if(myList !==null){
 }
 ```
 
-5. `resteando nuestra lista`: 
+5. `Resteando nuestra lista`: 
 
 - Al final de la lista de favoritos hemos creado un botón reset que, al hacer click sobre él, borra todos los favoritos a la vez.
 ```bash
@@ -123,6 +122,5 @@ removeFavs();
 ```
 que llamaremos dentro de la función renderListFav(), donde además, actualizaré de nuevo la infomracion guardada en mi localStorage.
 
-Os dejo por aqui el enlace a la página para que lo tengais a mano
-http://beta.adalab.es/modulo-2-evaluacion-final-virchaca/
+Os dejo por aqui el enlace a la página para que lo tengais a mano http://virchaca.github.io/buscador-de-series-MII/
 
