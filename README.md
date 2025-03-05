@@ -1,75 +1,96 @@
-# modulo-2-evaluacion-final-_Virginia Alvarez Perez_
-modulo-2-evaluacion-final-virchaca created by GitHub Classroom
+# 📺 Buscador de Series & Juego Piedra, Papel o Tijera
 
-Módulo 2: Ejercicio de evaluación final
+Este proyecto es una aplicación web interactiva que permite a los usuarios buscar y guardar sus series favoritas, además de disfrutar de un divertido juego de Piedra, Papel o Tijera.
 
-Despues de mes y medio de bootCamp, hemos terminado el segundo módulo, JavaScript, y vamos a realizar un ejercicio para comprobar que hemos asentado nuestros nuevos conocimientos.
-Lo primero crearemos este repositorio en GitHub y lo clonaremos en una carpeta en nuestro ordenador para trabajar con él. Por último publicaremos nuestro trabajo en GitHubPages, el enlace a GitHub Pages se mostrará en la página página principal del repositorio, en la parte superior, al lado de la descripción.
+## 🚀 Funcionalidades
 
-El ejercicio consiste en desarrollar una aplicación web de búsqueda de series de TV, con una lista de favoritas, donde podamos guardar nuestras pelis/series favoritas haciendo click sobre la que nos guste.
-Nuestras favoritas quedarán guardadas en local storage.
+### 🔍 Buscador de Series
+- Permite buscar series mediante un campo de entrada.
+- Recupera información de series desde una API externa.
+- Muestra una lista de resultados con imágenes y títulos.
+- Permite agregar y eliminar series a una lista de favoritos.
+- Almacena las series favoritas en el almacenamiento local del navegador (localStorage) para su persistencia.
+- Indica cuando una serie no tiene imagen disponible, mostrando una imagen por defecto.
 
-Para desarrollar el ejercicio, usaremos diferentes tipos de lenguaje, `HTML`, `CSS` y `JS`.
+### ⭐ Gestión de Favoritos
+- Sección específica donde se almacenan las series marcadas como favoritas.
+- Opción para eliminar series de la lista de favoritos.
+- Persistencia de datos mediante localStorage.
 
-Lo primero realizaremos una estructura básica de HTML, con un campo de texto y un botón para buscar series por su título, a la que daremos dinamismo por medio de ordenes y funciones de JS. 
-En esta ocasión el estilo de la página web será algo secundario, centrándonos más en la parte de JavaScript.
-Es importante linkar los archivvos CSS y JS correctamente a nuestro documento HTML.
-```bash
-<head>
-	....
-	<link rel="stylesheet" href="css/main.css">
-</head>
+### 🎮 Juego de Piedra, Papel o Tijera
+- Interfaz interactiva para jugar contra la IA.
+- Registra y muestra el resultado de cada ronda.
+- Se adapta visualmente al diseño del buscador de series.
+
+## 🛠️ Tecnologías utilizadas
+- **HTML5, CSS3 y SASS**: Maquetación y estilos.
+- **JavaScript (ES6)**: Lógica de la aplicación.
+- **LocalStorage**: Almacenamiento de favoritos.
+- **APIs externas**: Para obtener datos de las series.
+- **GitHub Pages**: Despliegue de la aplicación.
+
+## 📂 Estructura del Proyecto
 ```
-```bash
-<body>
-	....
-	<script src="js/main.js"></script>
-</body>
+📁 proyecto-buscador-series-juego
+ ├── 📂 css (Estilos de la aplicación)
+ ├── 📂 images (Recursos gráficos)
+ ├── 📂 js (Lógica y funcionalidades)
+ ├── 📄 index.html (Página principal)
+ ├── 📄 README.md (Este archivo)
 ```
 
-Los pasos seguidos son los siguietes:
+## 📌 Instalación y ejecución
+1. Clonar el repositorio:
+   ```bash
+   git clone https://github.com/virchaca/buscador-de-series-MII.git
+   ```
+2. Acceder al directorio del proyecto:
+   ```bash
+   cd buscador-de-series-MII
+   ```
+3. Instalar dependencias:
+   ```bash
+   npm install
+   ```
+4. Ejecutar el proyecto en local:
+   ```bash
+   npm start
+   ```
+
+## 🚀 Despliegue en GitHub Pages
+Para actualizar la versión en GitHub Pages, ejecutar:
+```bash
+npm run deploy
+```
+
+## 📬 Contacto
+Si tienes dudas o sugerencias, puedes contactarme a través de [LinkedIn](https://www.linkedin.com/in/virginia-alvarezperez/) o visitar mi [GitHub](https://github.com/virchaca).
+
+¡Gracias por visitar el proyecto! 😊
+
+
+
+
+
+Los pasos seguidos son los siguientes:
 
 1. Estructura básica de HTML
 Campo para buscar, seccion para pintar nuestra lista de favoritos y seccion para pintar los resultados de nuestra búsqueda.
-```bash
-        <header>
-		<h1>Buscador de Series</h1>
-       		<form action="">
-            	<input type="text"/>
-            	<button ">SEARCH</button>
-        	</form>
-	</header>
-```
-```bash
-        <div>
-            <h2 class="h2Fav">Mis Favoritas</h2>
-            <section class="sectionFav js-fav"></section>
-            <button class="js-reset btn">RESET</button>
-        </div>
-```
-```bash
-        <div>
-            <h2>Recomendaciones y búsquedas</h2>
-            <section></section>
-        </div> 
-```
+
 2. `Búsqueda`:
    
 Al hacer clic sobre el botón de Buscar, la aplicación debe conectarse al API abierto de TVMaze para
 búsqueda de series. 
 
-Esto lo conseguimos mediante petición fetch a la api indicada, que nos devolverá como respuesta, las series que coincidan con nuestra búsqueda.
-Creando una función render, renderizaremos cada serie con su nombre e imagen en la pagina. Las series que aun no tengan una imagen asociada, llevaran por defecto una que nosotros le hemos puesto.
+Esto lo conseguimos mediante petición fetch a la api, que nos devuelve como respuesta un listado de las series que coincidan con nuestra búsqueda.
+Las series que aun no tengan una imagen asociada, llevaran por defecto una que nosotros le hemos puesto.
 
 Ejecutaremos estas funciones asignando un evento click al botón de buscar.
 
 3. `Favoritos`:
    
-Una vez aparecen los resultados de búsqueda, la usuaria puede indicar cuáles son nuestras series
-favoritas haciendo clic sobre una serie. El listado de favoritas aparecerá siempre en la parte izquierda de la pantalla, debajo del formulario de búsqueda. 
-Para ello definimos una función utilizando el selector querySelectorAll y el sistema currentTarget para que cada vez que la usuaria pinche una serie, esta se añada a la lista de favoritos, y cambie su color de fondo y fuente.
+La usuaria puede seleccionar series favoritas haciendo clic sobre ellas. El listado de favoritas se almacenará en el localStorage para no perderlo. Además, los estilos de las series marcadas como favoritas cambiarán para diferenciarla del resto dentro del listado normal. 
 
-De nuevo definiremos una funcion render que renderice dicha lista.
 
 4. `Almacenamiento local`:
 
@@ -87,7 +108,7 @@ if(myList !==null){
 }
 ```
 
-5. `BONUS`: 
+5. `resteando nuestra lista`: 
 
 - Al final de la lista de favoritos hemos creado un botón reset que, al hacer click sobre él, borra todos los favoritos a la vez.
 ```bash
