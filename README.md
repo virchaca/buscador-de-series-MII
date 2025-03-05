@@ -72,7 +72,7 @@ Si tienes dudas o sugerencias, puedes contactarme a través de [LinkedIn](https:
 
 
 
-Los pasos seguidos son los siguientes:
+## 👣 Los pasos seguidos son los siguientes:
 
 1. Estructura básica de HTML
 Campo para buscar, seccion para pintar nuestra lista de favoritos y seccion para pintar los resultados de nuestra búsqueda.
